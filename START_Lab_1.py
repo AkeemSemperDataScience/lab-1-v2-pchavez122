@@ -32,14 +32,30 @@ def lab1Question4(file_name):
     # Take an input of a file name. 
     # Read that file and return a list of all numbers in that file
     list_of_nums = []
+    # file = open(file_name)
+    # for line in file:
+    #     new_line = line.splitlines()
+    #     list_of_nums.append(new_line)
+    # file.close()
     file = open(file_name)
-    for line in file:
-        print(line)
-        list_of_nums.append(line)
+    #list_of_nums = (int(item) for item in file.read().splitlines())
+    for item in file.read().splitlines():
+        if item.isnumeric():
+            item = int(item)
+        list_of_nums.append(item)
     file.close()
     return list_of_nums
 
-print(lab1Question4('github/test_file1.txt'))
+# print(lab1Question4('github/test_file1.txt'))
+# print(lab1Question4('github/test_file2.txt'))
+# test_list = ['1','a','3.14','4','5.001','b','3','c']
+# new_list = []
+# print(test_list)
+# for item in test_list:
+#     if item.isnumeric():
+#         item = int(item)
+#     new_list.append(item)
+# print(new_list)
 
 def lab1Question5(list_numbers):
     # Take an input of a list of numbers
@@ -71,6 +87,8 @@ def lab1Question6(quarters, dimes, nickels, pennies):
     # Return the total amount in dollars
     # For example, if the handful contains 4 quarters, 3 dimes, 2 nickels, and 1 penny, the function should return 1.41.
     total = None
+    #coin_value = {"quarter": 0.25, "dime": 0.10, "nickel": 0.05, "penny": 0.01}
+    total = (quarters * 0.25) + (dimes * 0.10) + (nickels * 0.05) + (pennies * 0.01)
     return total
 
 ## Example of calling a function to test these... 
