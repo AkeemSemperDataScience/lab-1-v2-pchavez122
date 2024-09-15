@@ -12,7 +12,7 @@ def lab1Question2(name):
     # Return None if the input is not a string
     is_odd = None
     length = len(name)
-    # Check if name is a string type and if its greater than 0
+    # Check if name is a string type and if its length greater than 0
     if type(name) is str and length > 0: 
         if (length%2 > 0):
             is_odd = True
@@ -20,16 +20,20 @@ def lab1Question2(name):
             is_odd = False
     return is_odd
 
-print(lab1Question2(""))
+#print(lab1Question2(""))
 
 def lab1Question3(input_string, input_number):
     # Take in two inputs - a string and a number
     # Return the character of the string in the index given by number.  If this index does not exist, then return -1.
     character_at = -1
+    max_index = len(input_string) - 1
+    print(max_index)
     # Checks if the input_number is in range of the lowest index to the highest index number for input_string
-    if (len(input_string) - 1 >= input_number) and (-(len(input_string) - 1) <= input_number): 
+    if (max_index >= input_number) and (-(max_index) <= input_number): 
         character_at = input_string[input_number]
     return character_at
+
+#print(lab1Question3('Hello World', -10))
 
 def lab1Question4(file_name):
     # Take an input of a file name. 
@@ -42,7 +46,9 @@ def lab1Question4(file_name):
     # file.close()
     file = open(file_name)
     #list_of_nums = (int(item) for item in file.read().splitlines())
+    # Goes through each line in the file
     for item in file.read().splitlines():
+        # check if the line is a number, convert it to an int
         if item.isnumeric():
             item = int(item)
         list_of_nums.append(item)
@@ -64,6 +70,7 @@ def lab1Question5(list_numbers):
     # Take an input of a list of numbers
     # Return the mode from that list. 
     mode_of_list = None
+    # checks if the number from the list param is in the dict, if not, add it, if it is add one to the value
     number_dict = {}
     for number in list_numbers:
         if not number in number_dict:
@@ -71,7 +78,8 @@ def lab1Question5(list_numbers):
         else:
             counter = number_dict[number] + 1
             number_dict.update({number: counter})
-    print(number_dict)
+    #print(number_dict)
+    # Compares the numbers in the dictionary to see how has the highest value/mode
     var_mode = 0
     for key, number in number_dict.items():
         if number > var_mode:
